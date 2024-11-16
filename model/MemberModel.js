@@ -5,6 +5,7 @@ const MemberSchema = new mongoose.Schema({
     lastname:String,
     othername:String,
     phone:String,
+    status:String,
     gender:{
         type: String,
         enum:['male','female']

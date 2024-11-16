@@ -50,8 +50,8 @@ exports.getMember = asyncErrorHandler(async(req,res,next)=>{
 
 exports.updateMember = asyncErrorHandler(async(req,res,next)=>{
    const {id} = req.params
-   const {firstname,lastname,othername,dateOfBirth,gender,role,phone,ageRange} = req.body
-   const response = await Member.findByIdAndUpdate(id,{$set:{firstname:firstname,lastname:lastname,othername:othername,phone:phone,dateOfBirth:dateOfBirth,gender:gender,ageRange:ageRange,role:role}})
+   const {firstname,lastname,othername,dateOfBirth,gender,role,status,phone,ageRange} = req.body
+   const response = await Member.findByIdAndUpdate(id,{$set:{firstname:firstname,lastname:lastname,othername:othername,phone:phone,dateOfBirth:dateOfBirth,status:status,gender:gender,ageRange:ageRange,role:role}})
    if(response){
     res.status(200).json({
         status:'success',
