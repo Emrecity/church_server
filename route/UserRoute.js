@@ -124,4 +124,31 @@ router.route('/:id')
  */
 .delete(UserController.deleteUser)
 
+router.route('/login')
+/**
+ * @swagger
+ * /api/v1/user/login:
+ *      post:
+ *          tags:
+ *              - User
+ *          summary: This endpoint logs in a user
+ *          consumes:
+ *              - application/json
+ *          produces:
+ *              - application/json
+ *          parameters:
+ *              - in: body
+ *                name: data
+ *                schema:
+ *                  type: object
+ *                  properties:
+ *                      email:
+ *                          type: string
+ *                      password:
+ *                          type: string
+ *          responses:
+ *              200:
+ *                  description: Ok
+ */
+.post(UserController.login)
 module.exports = router
