@@ -31,7 +31,7 @@ const port = 3000
 const Swagger = SwaggerDocs(app)
 
 
-mongoose.connect('mongodb+srv://owusu2020emmanuel:Emre@19.@cluster0.1nfp2.mongodb.net/PresbyDB?retryWrites=true&w=majority&appName=Cluster0').then(()=>{
+mongoose.connect('mongodb+srv://emre:emre2020@cluster0.1nfp2.mongodb.net/PresbyDB?retryWrites=true&w=majority&appName=Cluster0').then(()=>{
     console.log('Db connected')
     app.listen( port,()=>{
         console.log('Server is up and running')  
