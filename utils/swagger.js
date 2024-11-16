@@ -11,7 +11,7 @@ const options ={
             contact:{
                 name:"phly-tech pro"
             },
-            servers:['https://church-server-chi.vercel.app/'],
+            servers:['https://church-server-r5yy.vercel.app/'],
             basePath:'/api/v1/'
         },
        
