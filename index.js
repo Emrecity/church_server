@@ -31,15 +31,17 @@ const port = 3000
 const Swagger = SwaggerDocs(app)
 
 
-mongoose.connect('mongodb://localhost:27017/PresbyDb').then(()=>{
-    console.log('Db connected')
-    app.listen( port,()=>{
-        console.log('Server is up and running')  
-        Swagger  
-    })
+// mongoose.connect('mongodb://localhost:27017/PresbyDb').then(()=>{
+//     console.log('Db connected')
+   
 
-}).catch((err)=>{
-    console.log(err)
+// }).catch((err)=>{
+//     console.log(err)
+// })
+
+app.listen( port,()=>{
+    console.log('Server is up and running')  
+    Swagger  
 })
 
 app.all('*',(req,res,next)=>{
