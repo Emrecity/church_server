@@ -8,16 +8,16 @@ const MemberRoute = require('./route/MemberRoute')
 const EventRoute = require('./route/EventRoute')
 const cors = require('cors')
 
-const CorsOptions ={
-    origin:'https://church-client-git-main-emmanuels-projects-9cf1ec29.vercel.app/',
-    methods:'GET,HEAD,PUT,PATCH,POST,DELETE',
-    optionsSuccessStatus:204
-}
+// const CorsOptions ={
+//     origin:'https://church-client-git-main-emmanuels-projects-9cf1ec29.vercel.app/',
+//     methods:'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     optionsSuccessStatus:204
+// }
 
 const app = express()
 app.use(express.json({limit:'25KB'}))
 app.use(express.urlencoded({limit:'25KB',extended:true}))
-app.use(cors(CorsOptions))
+app.use(cors('*'))
 app.use(express.raw({limit:'25KB'}))
 app.use(morgan('dev'))
 app.use('/api/v1/user',UserRoute)
