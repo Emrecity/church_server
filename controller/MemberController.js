@@ -1,19 +1,69 @@
 const asyncErrorHandler = require('../utils/asyncErrorHandler')
 const Member = require('../model/MemberModel')
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    cloud_name: 'ductltfwu', 
+    api_key: '175126117263328', 
+    api_secret: 'J0duHFU_qhdmdvtGSlvCVWaYbew'
+  });
+
 
 exports.createMember = asyncErrorHandler(async(req,res,next)=>{
-    const {firstname} = req.body
-    console.log(`Hello ${firstname}!`)
-    if(firstname){
-        await Member.create(req.body)
-        res.status(201).json({
-            status:'success',
-            message:'Member created successfully'
-        })
-    }
-    if(!firstname){
-        res.send('Name is required')
-    }
+        let response
+        const {firstname} = req.body
+        console.log(firstname)
+        if(firstname){
+            if(req.file){
+              response = await cloudinary.uploader.upload(req.file.path, {
+              folder: 'images',
+            })
+             if(response){
+                req.body.image = response.secure_url
+             }
+            }
+            const result = await Member.create(req.body)
+            if(result){
+                res.status(201).json({
+                    status:'success',
+                    message:'Member created successfully'
+                })
+            }
+            if(!result){
+                res.status(400).json({status:'failed',message:`Member can't be created`}) 
+            }
+
+        }
+        if(!firstname){
+            res.json({status:'failed',message:'Name is required'})
+        }
+    
+        // const image = req.files.image[0];
+        // try{
+        //     const response= await cloudinary.uploader.upload(image.path, {
+        //       folder: 'images',
+        //     })
+        //     req.body.image = response.secure_url
+        //     const {firstname} = req.body
+        //     if(firstname){
+        //         await Member.create(req.body)
+        //         res.status(201).json({
+        //             status:'success',
+        //             message:'Member created successfully'
+        //         })
+        //     }
+        //     if(!firstname){
+        //         res.send('Name is required')
+        //     }
+            
+        //     // res.status(201).json({image: {public_id: response.public_id, url: response.secure_url}});
+        //   }catch {
+        //     res.status(500).json({ error: 'Internal Server Error' });
+        //   }
+        //   finally {
+        //     fs.unlinkSync(image.path);
+        //   }
+    
 })
 
 exports.getAllMember = asyncErrorHandler(async(req,res,next)=>{

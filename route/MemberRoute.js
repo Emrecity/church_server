@@ -1,6 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const MemberController = require('../controller/MemberController')
+const multer  = require('multer')
+
+const storage = multer.diskStorage({
+  destination: './images/',
+    filename: function (req, file, cb) {
+      cb(null, req.body.firstname + file.originalname)
+    }
+  })
+
+const upload = multer({storage: storage})
 
 router.route('/')
 /**
@@ -57,7 +67,7 @@ router.route('/')
  *              description: created
  */
 
-.post(MemberController.createMember)
+.post(upload.single('image'),MemberController.createMember)
 
 router.route('/:id')
 /**

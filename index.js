@@ -8,10 +8,13 @@ const MemberRoute = require('./route/MemberRoute')
 const EventRoute = require('./route/EventRoute')
 const cors = require('cors')
 
+
 // const CorsOptions ={
 //     origin:'https://church-client-git-main-emmanuels-projects-9cf1ec29.vercel.app/',
 //     methods:'GET,HEAD,PUT,PATCH,POST,DELETE',
 //     optionsSuccessStatus:204
+//'mongodb://localhost:27017/PresbyDB'
+//'mongodb+srv://emre:emre2020@cluster0.1nfp2.mongodb.net/PresbyDB?retryWrites=true&w=majority&appName=Cluster0'
 // }
 
 const app = express()
