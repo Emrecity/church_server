@@ -4,7 +4,9 @@ const MemberController = require('../controller/MemberController')
 const multer  = require('multer')
 
 const storage = multer.diskStorage({
-  destination: 'images/',
+  destination:  (req, file, cb) => {
+    cb(null, '/tmp'); // Use /tmp as the storage location
+  },
     filename: function (req, file, cb) {
       cb(null, req.body.firstname + file.originalname)
     }
