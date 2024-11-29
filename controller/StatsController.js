@@ -7,7 +7,7 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
     const memberResponse = await Member.find()
     const userResponse = await User.find()
     const eventResponse = await Event.find()
-    let MaleMembers,FemaleMembers,ActiveMembers,InactiveMembers,TotalMembers,TotalUsers,TotalEvents,UpcomingEvents,OngoingEvents
+    let MaleMembers,FemaleMembers,ActiveMembers,InactiveMembers,TotalMembers,TotalUsers,TotalEvents,UpcomingEvents,OngoingEvents,TotalMaleMembers,TotalFemaleMembers
     if(memberResponse){
          MaleMembers = memberResponse.filter((item)=>{
             return item.gender == 'male'
@@ -22,6 +22,8 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
             return item.status == 'inactive'
         })
          TotalMembers = memberResponse.length
+         TotalMaleMembers = MaleMembers.length
+         TotalFemaleMembers = FemaleMembers.length
     }
     if(userResponse){
         TotalUsers = userResponse.length
@@ -43,6 +45,8 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
             ActiveMembers:ActiveMembers,
             InactiveMembers:InactiveMembers,
             TotalMembers:TotalMembers,
+            TotalMaleMembers:TotalMaleMembers,
+            TotalFemaleMembers:TotalFemaleMembers,
             TotalUsers:TotalUsers,
             TotalEvents:TotalEvents,
             UpcomingEvents:UpcomingEvents.length,
