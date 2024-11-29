@@ -26,7 +26,7 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
          TotalFemaleMembers = FemaleMembers.length
     }
     if(userResponse){
-        TotalUsers = userResponse.length
+        TotalUsers = userResponse
     }
     if(eventResponse){
         TotalEvents = eventResponse.length
@@ -47,12 +47,13 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
             TotalMembers:TotalMembers,
             TotalMaleMembers:TotalMaleMembers,
             TotalFemaleMembers:TotalFemaleMembers,
-            TotalUsers:TotalUsers,
+            TotalUsers:TotalUsers.length,
             TotalEvents:TotalEvents,
             UpcomingEvents:UpcomingEvents.length,
             OngoingEvents:OngoingEvents.length,
             ListUpcomingEvents:UpcomingEvents,
-            ListOngoingEvents:OngoingEvents
+            ListOngoingEvents:OngoingEvents,
+            ListUsers:TotalUsers
         }
     })
 
