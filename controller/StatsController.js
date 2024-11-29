@@ -50,7 +50,9 @@ exports.getAllStats = asyncErrorHandler(async(req,res,next)=>{
             TotalUsers:TotalUsers,
             TotalEvents:TotalEvents,
             UpcomingEvents:UpcomingEvents.length,
-            OngoingEvents:OngoingEvents.length
+            OngoingEvents:OngoingEvents.length,
+            ListUpcomingEvents:UpcomingEvents,
+            ListOngoingEvents:OngoingEvents
         }
     })
 
