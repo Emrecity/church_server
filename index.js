@@ -6,6 +6,7 @@ const CustomError = require('./utils/CustomError')
 const UserRoute = require('./route/UserRoute')
 const MemberRoute = require('./route/MemberRoute')
 const EventRoute = require('./route/EventRoute')
+const StatsRoute = require('./route/StatsRoute')
 const cors = require('cors')
 
 
