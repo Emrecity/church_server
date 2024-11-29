@@ -138,7 +138,7 @@ router.route('/:id')
  *                  description: Ok
  * 
  */
-.patch(MemberController.updateMember)
+.patch(upload.single('image'),MemberController.updateMember)
 /**
  * @swagger
  * /api/v1/member/{id}:
