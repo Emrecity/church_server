@@ -139,3 +139,21 @@ exports.deleteMember = asyncErrorHandler(async(req,res,next)=>{
         })
     }
 })
+
+exports.loginMember = asyncHandler(async (req,res)=>{
+    const {firstname,phone} = req.body
+    const response = await Member.findOne({firstname:firstname,phone:phone})
+    if(response){
+        res.status(200).json({
+            status:'success',
+            message:'Login Successful',
+            data:response
+        })
+    }
+    if(!response){
+        res.status(400).json({
+            status:'failed',
+            message:'Login Failed'
+        })
+    }
+})

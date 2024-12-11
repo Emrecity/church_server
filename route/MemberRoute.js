@@ -160,4 +160,32 @@ router.route('/:id')
  */
 .delete(MemberController.deleteMember)
 
+router.route('/login')
+/**
+ * @swagger
+ * /api/v1/user/login:
+ *      post:
+ *          tags:
+ *              - Member
+ *          summary: This endpoint logs in a member
+ *          consumes:
+ *              - application/json
+ *          produces:
+ *              - application/json
+ *          parameters:
+ *              - in: body
+ *                name: data
+ *                schema:
+ *                  type: object
+ *                  properties:
+ *                      firstname:
+ *                          type: string
+ *                      phone:
+ *                          type: string
+ *          responses:
+ *              200:
+ *                  description: Ok
+ */
+.post(MemberController.loginMember)
+
 module.exports = router
