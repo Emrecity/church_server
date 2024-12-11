@@ -13,6 +13,11 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         enum:['male','female']
     },
+    communicant:{
+        type: String,
+        enum:['yes','no'],
+        default:'no'
+    },
     image:{
        type:String,
        default:''
