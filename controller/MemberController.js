@@ -142,7 +142,7 @@ exports.deleteMember = asyncErrorHandler(async(req,res,next)=>{
 
 exports.loginMember = asyncErrorHandler(async (req,res)=>{
     const {firstname,phone} = req.body
-    const response = await Member.find({firstname:firstname,phone:phone})
+    const response = await Member.findOne({firstname:firstname,phone:phone})
     if(response){
         res.status(200).json({
             status:'success',
